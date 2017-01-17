@@ -9,7 +9,6 @@ endif(COMMAND cmake_policy)
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse -msse2 -msse3 -w -nostdinc")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D__DARWIN_UNIX03 -fPIC -w")
-set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -nostdlib -Wl,--version-script=${DARLING_TOP_DIRECTORY}/darwin.map")
 
 add_definitions(-DHAVE_EXPAT_CONFIG_H)
 
@@ -24,11 +23,11 @@ set(expat_sources
 	expat/lib/xmltok_ns.c
 )
 
-SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/darling")
-SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE) 
-SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-
-add_library(expat SHARED ${expat_sources})
+set(DYLIB_INSTALL_NAME "/usr/lib/libexpat.1.dylib")
+add_darling_library(expat SHARED ${expat_sources})
 target_link_libraries(expat system)
+set_target_properties(expat PROPERTIES OUTPUT_NAME "expat.1")
 
-install(TARGETS expat DESTINATION ${CMAKE_INSTALL_LIBDIR}/darling)
+InstallSymlink("libexpat.1.dylib" "${CMAKE_INSTALL_PREFIX}/libexec/darling/usr/lib/libexpat.dylib")
+
+install(TARGETS expat DESTINATION libexec/darling/usr/lib)
