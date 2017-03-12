@@ -24,6 +24,9 @@ set(expat_sources
 )
 
 set(DYLIB_INSTALL_NAME "/usr/lib/libexpat.1.dylib")
+set(DYLIB_COMPAT_VERSION "7.0.0")
+set(DYLIB_CURRENT_VERSION "8.0.0")
+
 add_darling_library(expat SHARED ${expat_sources})
 make_fat(expat)
 target_link_libraries(expat system)
