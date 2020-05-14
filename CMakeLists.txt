@@ -13,7 +13,6 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D__DARWIN_UNIX03 -fPIC -w")
 add_definitions(-DHAVE_EXPAT_CONFIG_H)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/)
-include_directories(${DARLING_TOP_DIRECTORY}/platform-include)
 
 set(expat_sources
 	expat/lib/xmlparse.c
