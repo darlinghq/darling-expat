@@ -1,1 +1,0 @@
-../expat/lib/amigaconfig.h

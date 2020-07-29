@@ -219,6 +219,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = FD18B1B11485AC2600BBAEF9;
@@ -277,8 +278,12 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "-";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				INSTALLHDRS_SCRIPT_PHASE = YES;
 				PROVISIONING_PROFILE = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
+				SUPPORTS_TEXT_BASED_API = YES;
+				TAPI_VERIFY_MODE = Pedantic;
 			};
 			name = Release;
 		};
@@ -295,9 +300,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 7;
 				DYLIB_CURRENT_VERSION = 8;
 				EXECUTABLE_PREFIX = lib;
-				GCC_PREPROCESSOR_DEFINITIONS = HAVE_EXPAT_CONFIG_H;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					HAVE_EXPAT_CONFIG_H,
+					"XML_ENABLE_VISIBILITY=1",
+				);
 				HEADER_SEARCH_PATHS = "$(SRCROOT)";
 				INSTALL_PATH = /usr/lib;
+				IS_ZIPPERED = YES;
 				PRODUCT_NAME = "$(TARGET_NAME).1";
 				PUBLIC_HEADERS_FOLDER_PATH = /usr/include;
 				WARNING_CFLAGS = (
